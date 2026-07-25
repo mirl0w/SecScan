@@ -43,21 +43,6 @@ Same thing, but lets you choose the output folder, which report formats to gener
 
 Config is read from .secscan/secscan.yaml by default. A sample is included in the project. Use it to turn scanners or reporters on and off, set per-scanner options, and set the severity threshold.
 
-TRY IT ON THE SAMPLE PROJECT
-secscan scan -t examples/vulnerable_sample
-cat .secscan/output/secscan.md
-
-The examples/vulnerable_sample folder intentionally contains a shell injection bug, a weak password hash, an unsafe pickle load, and a couple of fake AWS credentials, so both scanners have something real to catch.
-
-RUNNING THE TESTS
-pytest tests/
-If pytest isn't installed yet, run "python tests/run_tests.py" instead, which does the same job with a tiny script that only needs the Python standard library.
-
-HOW TO ADD A NEW SCANNER
-Create a new adapter file, make it follow the same rules as bandit_adapter.py (build a command, parse the output into Finding objects), add it to the list of scanners in cli.py, then write tests against a sample of that tool's real output.
-
-HOW TO ADD A NEW REPORT FORMAT
-Create a new reporter file, make it turn AggregatedResults into a string, then add it to the list of reporters in cli.py.
 
 WHAT'S NOT BUILT YET
 SARIF, HTML, CSV, and JUnit report formats. More scanners such as Semgrep and Checkov. The MCP server layer that would let an AI assistant call this tool directly. Suppression and baseline file support, so known false positives can be marked as acceptable instead of showing up every scan. Container-based execution mode.
