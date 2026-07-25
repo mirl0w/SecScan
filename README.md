@@ -1,0 +1,1 @@
+The whole design rests on one rule: scanners and reports never talk to each other directly. Everything flows through one shared shape in the middle. That's what makes it a "plugin architecture" instead of a pile of if/else statements.
